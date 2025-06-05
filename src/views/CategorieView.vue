@@ -54,7 +54,7 @@ const categorieVide = {
 
 let data = reactive({
     // Les données saisies dans le formulaire
-    formulaireCategorie: { ...categorieVide },
+    formulaireProduit: { ...categorieVide },
     // La liste des catégories affichée sous forme de table
     listeCategories: []
 });
@@ -80,7 +80,7 @@ function ajouteCategorie() {
     // Ajouter une catégorie avec les données du formulaire
     const options = {
         method: "POST", // Verbe HTTP POST pour ajouter un enregistrement
-        body: JSON.stringify(data.formulaireCategorie),
+        body: JSON.stringify(data.formulaireProduit),
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
@@ -89,7 +89,7 @@ function ajouteCategorie() {
     doAjaxRequest("/api/categories", options)
         .then(() => {
             // Réinitialiser le formulaire
-            data.formulaireCategorie = { ...categorieVide };
+            data.formulaireProduit = { ...categorieVide };
             // Recharger la liste des catégories
             chargeCategories();
         })
